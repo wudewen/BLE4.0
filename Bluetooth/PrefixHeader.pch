@@ -1,0 +1,41 @@
+//
+//  PrefixHeader.pch
+//  时尚购物
+//
+//  Created by 吴德文 on 16/10/11.
+//  Copyright © 2016年 XiangYuKeJi. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Masonry.h"
+#import "UIView+Toast.h"
+
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
+// 颜色
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0];
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
+#define MainColor [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+
+// 打印信息NSLog
+#ifdef DEBUG    // 判断是不是开发、调试状态，如果是开发调试状态就让WDWLog替换WDWLog
+#define WDWLog(...) NSLog(__VA_ARGS__) //WDWLog是不限制参数的，中间用三个英文句号表示
+#elif   // 如果是发布状态就WDWLog就直接为空
+#define WDWLog(...)
+#endif
+
+// PNG JPG 图片路径
+#define PNGPATH(NAME)           [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String:NAME] ofType:@"png"]
+#define JPGPATH(NAME)           [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String:NAME] ofType:@"jpg"]
+#define PATH(NAME, EXT)         [[NSBundle mainBundle] pathForResource:(NAME) ofType:(EXT)]
+
+// 加载图片
+#define PNGIMAGE(NAME)          [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:(NAME) ofType:@"png"]]
+#define JPGIMAGE(NAME)          [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:(NAME) ofType:@"jpg"]]
+#define IMAGE(NAME, EXT)        [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:(NAME) ofType:(EXT)]]
+#define IMAGEFILE(NAME)         [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:(NAME)]]
+
+#endif /* PrefixHeader_pch */
